@@ -1,23 +1,23 @@
-# Tundra-Fetch
+# Tundra-XHR
 ![license-MIT](https://img.shields.io/badge/license-MIT-brightgreen.svg)
-[![npm version](https://badge.fury.io/js/tundra-fetch.svg)](https://badge.fury.io/js/tundra-fetch)
-[![CircleCI](https://circleci.com/gh/tylermurry/tundra-fetch.svg?style=shield)](https://circleci.com/gh/tylermurry/tundra-fetch)
-[![codecov](https://codecov.io/gh/tylermurry/tundra-fetch/branch/master/graph/badge.svg)](https://codecov.io/gh/tylermurry/tundra-fetch)
+[![npm version](https://badge.fury.io/js/tundra-xhr.svg)](https://badge.fury.io/js/tundra-xhr)
+[![CircleCI](https://circleci.com/gh/tylermurry/tundra-xhr.svg?style=shield)](https://circleci.com/gh/tylermurry/tundra-xhr)
+[![codecov](https://codecov.io/gh/tylermurry/tundra-xhr/branch/master/graph/badge.svg)](https://codecov.io/gh/tylermurry/tundra-xhr)
 
-Tundra-fetch is Javascript-based client for the [Tundra server](https://github.com/tylermurry/tundra-cli) that helps  with offline test data management - specifically for projects using the fetch http library.
+Tundra-xhr is a client for the Tundra server that assist with offline test data management specifically for projects using XMLHttpRequest as method for http access
 
 ### Installing the Client
-`npm install --save tundra-fetch`
+`npm install --save tundra-xhr`
 
 ### Using the Client
 There are two main uses for the client:
 
-#### Intercepting Fetch Calls
-This client is built to intercept all uses of the fetch library and forward them to the Tundra server to be recorded for offline use. To do this, we need to initialize the interceptor when the application starts up and direct it to our server:
+#### Intercepting XMLHttpRequest Calls
+This client is built to intercept all uses XMLHttpRequest and forward them to the Tundra server to be recorded for offline use. To do this, we need to initialize the interceptor when the application starts up and direct it to our server:
 
 ```javascript
 function someAppInitFunction() {
-    require('tundra-fetch').interceptFetchCalls(9090);
+    require('tundra-xhr').interceptXHRCalls(9090);
 }
 ```
 Port `9090` in this case is completely configurable based on what port we start our server on.
@@ -30,7 +30,7 @@ After a profile has been captured, you now have an offline data store that can b
 When and where you decide to load the profile is up to the specific needs of your application. However, getting the traffic from the profile to replay during the test execution is as simple as:
 
 ```javascript
-import {replayProfile} from 'tundra-fetch'
+import {replayProfile} from 'tundra-xhr'
 ...
 loadProfile() {
     replayProfile(require("./fixtures/profiles/scenario1.json"));
