@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/intercept.js"],"names":["port","callback"],"mappings":";;;;;;kBACe,UAACA,IAAD,EAAOC,QAAP,EAAoB;AACjC;AACAA;AACD,C","file":"intercept.js","sourcesContent":["\nexport default (port, callback) => {\n  // TODO: This\n  callback();\n};\n"]}

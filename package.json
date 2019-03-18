@@ -1,0 +1,65 @@
+{
+  "name": "tundra-xhr",
+  "version": "1.2.2",
+  "description": "Tundra-xhr is a client for the Tundra server that assist with offline test data management specifically for projects using XMLHttpRequest as method for http access",
+  "main": "index.js",
+  "keywords": [
+    "tundra",
+    "tundra-cli",
+    "tundra-xhr",
+    "xhr",
+    "XMLHttpRequest",
+    "mock",
+    "interceptor",
+    "intercept"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "test": "jest && codecov",
+    "validate": "npm run lint && npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tylermurry/tundra-xhr"
+  },
+  "author": "Tyler Murry",
+  "license": "MIT",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.4.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "core-js": "^2.5.5",
+    "hashcode": "^1.0.3",
+    "lodash.escaperegexp": "^4.1.2",
+    "lodash.omit": "^4.5.0",
+    "matcher": "^1.1.1",
+    "url": "^0.11.0",
+    "xhr-mock": "^2.4.1"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "codecov": "^3.1.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "jest": "^23.4.2",
+    "node-fetch": "^2.2.0",
+    "regenerator-runtime": "^0.12.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/dist/",
+      "/examples/"
+    ],
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
+  }
+}
