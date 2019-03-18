@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`intercept should proxy the request properly 1`] = `
+Array [
+  Array [
+    Object {
+      "request": Object {
+        "content": null,
+        "headers": Object {},
+        "method": "GET",
+        "url": "http://httpstat.us/200",
+      },
+      "response": Object {
+        "content": "",
+        "headers": Object {
+          "access-control-allow-origin": "*",
+          "cache-control": "private",
+          "connection": "close",
+          "content-length": "0",
+          "date": "static date",
+          "server": "Microsoft-IIS/10.0",
+          "set-cookie": "ARRAffinity=beec3692495883b8df6195e900c12f49514e054d865a22ad2951c84f51dbaf93;Path=/;HttpOnly;Domain=httpstat.us",
+          "x-aspnet-version": "4.0.30319",
+          "x-aspnetmvc-version": "5.1",
+          "x-powered-by": "ASP.NET",
+        },
+        "statusCode": 200,
+      },
+    },
+  ],
+]
+`;
+
+exports[`intercept should proxy the request properly 2`] = `
+Array [
+  Array [
+    Object {
+      "request": Object {
+        "content": null,
+        "headers": Object {},
+        "method": "GET",
+        "url": "http://httpstat.us/200",
+      },
+      "response": Object {
+        "content": "",
+        "headers": Object {
+          "access-control-allow-origin": "*",
+          "cache-control": "private",
+          "connection": "close",
+          "content-length": "0",
+          "date": "static date",
+          "server": "Microsoft-IIS/10.0",
+          "set-cookie": "ARRAffinity=beec3692495883b8df6195e900c12f49514e054d865a22ad2951c84f51dbaf93;Path=/;HttpOnly;Domain=httpstat.us",
+          "x-aspnet-version": "4.0.30319",
+          "x-aspnetmvc-version": "5.1",
+          "x-powered-by": "ASP.NET",
+        },
+        "statusCode": 200,
+      },
+    },
+    9091,
+    true,
+    undefined,
+  ],
+]
+`;

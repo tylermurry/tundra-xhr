@@ -9,25 +9,12 @@ import buildRequestId from './requestIdBuilder';
 import removeURLPrefix from './removeURLPrefix';
 import submitRequestData from './submitRequest';
 import buildRepeatableMockFunction from './repeatableMockFunctionBuilder';
+import buildRequest from './requestBuilder';
 
 const DEFAULT_CONFIG = {
   debuggingEnabled: true,
   debugPort: 9091,
 };
-
-const buildRequest = (request, response) => ({
-  request: request ? {
-    url: request._url.toString(),
-    headers: request._headers,
-    method: request._method,
-    content: request._body,
-  } : null,
-  response: response ? {
-    headers: response._headers,
-    statusCode: response._status,
-    content: response._body,
-  } : null,
-});
 
 export const requestMatches = (matchingConfig, profileRequest, request) => {
   const headersToOmit = matchingConfig ? matchingConfig.headersToOmit : null;

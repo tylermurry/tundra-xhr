@@ -41,27 +41,15 @@ var _repeatableMockFunctionBuilder = require('./repeatableMockFunctionBuilder');
 
 var _repeatableMockFunctionBuilder2 = _interopRequireDefault(_repeatableMockFunctionBuilder);
 
+var _requestBuilder = require('./requestBuilder');
+
+var _requestBuilder2 = _interopRequireDefault(_requestBuilder);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var DEFAULT_CONFIG = {
   debuggingEnabled: true,
   debugPort: 9091
-};
-
-var buildRequest = function buildRequest(request, response) {
-  return {
-    request: request ? {
-      url: request._url.toString(),
-      headers: request._headers,
-      method: request._method,
-      content: request._body
-    } : null,
-    response: response ? {
-      headers: response._headers,
-      statusCode: response._status,
-      content: response._body
-    } : null
-  };
 };
 
 var requestMatches = exports.requestMatches = function requestMatches(matchingConfig, profileRequest, request) {
@@ -84,7 +72,7 @@ var matchingFunction = exports.matchingFunction = function matchingFunction(matc
     var everythingMatches = requestMatches(matchingConfig, request, req);
 
     if (matchingConfig && matchingConfig.debuggingEnabled) {
-      (0, _submitRequest2.default)(buildRequest(req, res), matchingConfig.debugPort, everythingMatches, realXHR);
+      (0, _submitRequest2.default)((0, _requestBuilder2.default)(req, res), matchingConfig.debugPort, everythingMatches, realXHR);
     }
 
     if (everythingMatches) {
