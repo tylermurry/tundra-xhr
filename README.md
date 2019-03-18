@@ -17,10 +17,10 @@ This client is built to intercept all uses XMLHttpRequest and forward them to th
 
 ```javascript
 function someAppInitFunction() {
-    require('tundra-xhr').interceptXHRCalls(9090);
+    require('tundra-xhr').interceptXHRCalls(9091);
 }
 ```
-Port `9090` in this case is completely configurable based on what port we start our server on.
+Port `9091` in this case is completely configurable based on what port we start our server on.
 
 The idea is to only enable this code before running a manual test of the app, so *ensure that you remove this before going to production or is toggled off for a production build*
 
