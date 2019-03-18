@@ -48,8 +48,8 @@ describe('intercept', function () {
           case 4:
 
             // Dear future self, please forgive this mortal sin. Fix when able.
-            callback.mock.calls[0][0].response.headers['date'] = 'static date';
-            _submitRequest2.default.mock.calls[0][0].response.headers['date'] = 'static date';
+            callback.mock.calls[0][0].response.headers.date = 'static date';
+            _submitRequest2.default.mock.calls[0][0].response.headers.date = 'static date';
 
             expect(callback.mock.calls).toMatchSnapshot();
             expect(_submitRequest2.default.mock.calls).toMatchSnapshot();

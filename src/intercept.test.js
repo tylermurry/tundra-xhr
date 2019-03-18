@@ -26,8 +26,8 @@ describe('intercept', () => {
     await makeFakeRequest();
 
     // Dear future self, please forgive this mortal sin. Fix when able.
-    callback.mock.calls[0][0].response.headers['date'] = 'static date';
-    submitRequestData.mock.calls[0][0].response.headers['date'] = 'static date';
+    callback.mock.calls[0][0].response.headers.date = 'static date';
+    submitRequestData.mock.calls[0][0].response.headers.date = 'static date';
 
     expect(callback.mock.calls).toMatchSnapshot();
     expect(submitRequestData.mock.calls).toMatchSnapshot();
