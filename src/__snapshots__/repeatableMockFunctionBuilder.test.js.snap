@@ -1,45 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`repeatableMockFunctionBuilder should build a function when a repeatMode of 'first' is given 1`] = `
-"function baseMockFunction(req, res) {
-    /* istanbul ignore next */cov_1e3dtz6vho.f[2]++;
-    cov_1e3dtz6vho.s[4]++;
-    return buildResponse(res, response);
-  }"
+ResponseBuilder {
+  "response": " 200  something",
+}
 `;
 
 exports[`repeatableMockFunctionBuilder should build a function when a repeatMode of 'last' is given and invocations do not exceed the number of repeats 1`] = `
-"function (req, res) {
-        if (callCount === 0) {
-            ++callCount;
-            return typeof mock === 'function'
-                ? mock(req, res)
-                : createResponseFromObject_1.createResponseFromObject(mock);
-        }
-        else {
-            return undefined;
-        }
-    }"
+ResponseBuilder {
+  "response": " 200  something",
+}
 `;
 
 exports[`repeatableMockFunctionBuilder should build a function when a repeatMode of 'last' is given and invocations exceed the number of repeats 1`] = `
-"function baseMockFunction(req, res) {
-    /* istanbul ignore next */cov_1e3dtz6vho.f[2]++;
-    cov_1e3dtz6vho.s[4]++;
-    return buildResponse(res, response);
-  }"
+ResponseBuilder {
+  "response": " 200  something",
+}
 `;
 
 exports[`repeatableMockFunctionBuilder should build a function when no input is given 1`] = `
-"function (req, res) {
-        if (callCount === 0) {
-            ++callCount;
-            return typeof mock === 'function'
-                ? mock(req, res)
-                : createResponseFromObject_1.createResponseFromObject(mock);
-        }
-        else {
-            return undefined;
-        }
-    }"
+ResponseBuilder {
+  "response": " 200  something",
+}
 `;

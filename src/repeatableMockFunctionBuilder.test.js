@@ -1,8 +1,13 @@
+import { once } from 'xhr-mock';
 import buildRepeatMap from './requestRepeatMapBuilder';
 import buildRepeatableMockFunction from './repeatableMockFunctionBuilder';
 import buildRequestId from './requestIdBuilder';
 
 const buildRequest = (method, url) => ({ request: { method, url } });
+
+jest.mock('xhr-mock', () => ({
+  once: jest.fn(),
+}));
 
 describe('repeatableMockFunctionBuilder', () => {
   const requests = [
@@ -16,11 +21,28 @@ describe('repeatableMockFunctionBuilder', () => {
     content: 'something',
   };
 
+  // Dummy builder to satisfy the buildResponse function
+  class ResponseBuilder {
+    constructor() { this.response = ''; }
+
+    status(status) { this.response = `${this.response} ${status}`; return this; }
+
+    headers(headers) { this.response = `${this.response} ${headers}`; return this; }
+
+    body(body) { this.response = `${this.response} ${body}`; return this; }
+  }
+
+  beforeEach(() => {
+    jest.resetAllMocks();
+  });
+
   it('should build a function when no input is given', () => {
     const repeatMap = buildRepeatMap(requests);
     const { request } = requests[0];
 
-    expect(`${buildRepeatableMockFunction(null, repeatMap, request, response)}`).toMatchSnapshot();
+    buildRepeatableMockFunction(null, repeatMap, request, response);
+
+    expect(once.mock.calls[0][0](null, new ResponseBuilder())).toMatchSnapshot();
   });
 
   it('should build a function when a repeatMode of \'first\' is given', () => {
@@ -28,7 +50,10 @@ describe('repeatableMockFunctionBuilder', () => {
     const { request } = requests[0];
     const config = { repeatMode: 'FIRST' };
 
-    expect(`${buildRepeatableMockFunction(config, repeatMap, request, response)}`).toMatchSnapshot();
+    expect(
+      buildRepeatableMockFunction(config, repeatMap, request, response)(null, new ResponseBuilder()),
+    ).toMatchSnapshot();
+    expect(once).not.toHaveBeenCalled();
   });
 
   it('should build a function when a repeatMode of \'last\' is given '
@@ -37,7 +62,9 @@ describe('repeatableMockFunctionBuilder', () => {
     const { request } = requests[0];
     const config = { repeatMode: 'LAST' };
 
-    expect(`${buildRepeatableMockFunction(config, repeatMap, request, response)}`).toMatchSnapshot();
+    buildRepeatableMockFunction(config, repeatMap, request, response);
+
+    expect(once.mock.calls[0][0](null, new ResponseBuilder())).toMatchSnapshot();
   });
 
   it('should build a function when a repeatMode of \'last\' is given '
@@ -48,6 +75,9 @@ describe('repeatableMockFunctionBuilder', () => {
 
     repeatMap[buildRequestId(request)].invocations = 3;
 
-    expect(`${buildRepeatableMockFunction(config, repeatMap, request, response)}`).toMatchSnapshot();
+    expect(
+      buildRepeatableMockFunction(config, repeatMap, request, response)(null, new ResponseBuilder()),
+    ).toMatchSnapshot();
+    expect(once).not.toHaveBeenCalled();
   });
 });
