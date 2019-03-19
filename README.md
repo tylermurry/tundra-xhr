@@ -13,7 +13,7 @@ Tundra-xhr is a client for the Tundra server that assist with offline test data 
 There are two main uses for the client:
 
 #### Intercepting XMLHttpRequest Calls
-This client is built to intercept all uses XMLHttpRequest and forward them to the Tundra server to be recorded for offline use. To do this, we need to initialize the interceptor when the application starts up and direct it to our server:
+This client is built to intercept all uses of XMLHttpRequest and forward them to the Tundra server to be recorded for offline use. To do this, we need to initialize the interceptor when the application starts up and direct it to our server:
 
 ```javascript
 function someAppInitFunction() {
